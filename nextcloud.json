@@ -8,7 +8,7 @@
         "nat_forwards": "tcp(80:8282)"
     },
     "pkgs": [
-        "nextcloud-php73",
+        "nextcloud-php74",
         "nginx",
         "mariadb104-server"
     ],
