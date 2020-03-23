@@ -8,10 +8,10 @@ Nginx packages available from the FreeBSD repository.
 
 ##### *Plugin includes:*
 * FreeBSD 12.1-RELEASE
-* nextcloud-php73
+* nextcloud-php74
 * mariadb104-server
 * nginx
 
 Note: I am using this with a regular install of FreeBSD, not FreeNAS, but I would
-imagine it will still work because I am leaving all the files from the 11.3-RELEASE
+imagine it will still work because I am leaving all the files from the 11.2-RELEASE
 version of this plugin.
