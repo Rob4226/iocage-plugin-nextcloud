@@ -42,10 +42,17 @@ NCPASS=`cat /root/ncpassword`
 
 
 # Configure mysql
-mysql -u root <<-EOF
-UPDATE mysql.user SET Password=PASSWORD('${PASS}') WHERE User='root';
-DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
-DELETE FROM mysql.user WHERE User='';
+# mysql -u root <<-EOF
+# UPDATE mysql.user SET Password=PASSWORD('${PASS}') WHERE User='root';
+# DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+# DELETE FROM mysql.user WHERE User='';
+#
+# 3.23.2020 5:17PM The above causes an error starting with MariaDB 10.4 due to updated ways in logging
+# into root account. So instead, using unix_socket means that if you are the system root user, you can 
+# login as root@locahost without a password. Using unix_socket means that if you are the system root 
+# user, you can login as root@locahost without a password.
+
+mysql --protocol=socket <<-EOF
 DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
 
 CREATE USER '${USER}'@'localhost' IDENTIFIED BY '${PASS}';
@@ -91,5 +98,5 @@ echo "Nextcloud Admin User: $NCUSER" >> /root/PLUGIN_INFO
 echo "Nextcloud Admin Password: $NCPASS" >> /root/PLUGIN_INFO
 
 # also output usernames and passwords to console after install completes for non-freenas users
-echo /root/PLUGIN_INFO
+cat /root/PLUGIN_INFO
 
