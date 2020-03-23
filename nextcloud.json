@@ -1,0 +1,25 @@
+{
+    "name": "nextcloud",
+    "plugin_schema": "2",
+    "release": "12.1-RELEASE",
+    "artifact": "https://github.com/Rob4226/iocage-plugin-nextcloud.git",
+    "properties": {
+        "nat": 1,
+        "nat_forwards": "tcp(80:8282)"
+    },
+    "pkgs": [
+        "nextcloud-php73",
+        "nginx",
+        "mariadb104-server"
+    ],
+    "packagesite": "https://pkg.freebsd.org/FreeBSD:12:amd64/latest",
+    "fingerprints": {
+        "iocage-plugins": [
+            {
+                "function": "sha256",
+                "fingerprint": "b0170035af3acc5f3f3ae1859dc717101b4e6c1d0a794ad554928ca0cbb2f438"
+            }
+        ]
+    },
+    "revision": "0"
+}

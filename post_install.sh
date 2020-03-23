@@ -89,3 +89,7 @@ echo "Database Password: $PASS" >> /root/PLUGIN_INFO
 
 echo "Nextcloud Admin User: $NCUSER" >> /root/PLUGIN_INFO
 echo "Nextcloud Admin Password: $NCPASS" >> /root/PLUGIN_INFO
+
+# also output usernames and passwords to console after install completes for non-freenas users
+echo /root/PLUGIN_INFO
+
